@@ -37,7 +37,7 @@
             </div>
             <div class="card mt-5" style="width: 60rem;height:fit-content">
                 <div class="card-body">
-                    <?php $result = $mysqli->query("Select * from studentrequest") ?>
+                    <?php $result = $mysqli->query("SELECT * FROM request WHERE name='" . $_SESSION['name'] . "'") ?>
 
                     <table class="table table-borderless">
                         <thead>
@@ -60,7 +60,7 @@
                                     <td><?php echo $row['type'] ?></td>
                                     <td>
                                         <?php if ($row['status'] == 0) : ?>
-                                            <small class="text-danger">Your request is pending... <i class="far fa-clock"></i></small>
+                                            <small class="text-danger">Waiting for response... <i class="far fa-clock"></i></small>
                                         <?php else : ?>
                                             <small class="text-success">Your request has been approved!</small>
                                         <?php endif; ?>
@@ -69,6 +69,7 @@
                             <?php endwhile; ?>
                         </tbody>
                     </table>
+
                 </div>
             </div>
 

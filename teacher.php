@@ -37,21 +37,40 @@
       </li>
       <li>
         <span onmouseenter="hoverEnter(1)">
-          <i class="fas fa-user-graduate"></i>
+          <i class="fas fa-users"></i>
         </span>
       </li>
       <li>
         <span onmouseenter="hoverEnter(2)">
-          <i class="fas fa-bell"></i>
+          <?php $results =  $mysqli->query("SELECT * FROM request WHERE teacher = '" . $_SESSION['name'] . "' && status = 0 && obtain = 'no'") or die($mysqli->error); ?>
+          <?php $number = mysqli_num_rows($results) ?>
+          <?php if ($number <= 0) : ?>
+            <i class="fas fa-bell"></i>
+          <?php else : ?>
+            <p style="padding: 2px;background-color:red;border-radius:50%;color:white;height:25px;width:25px;font-size:small;position:absolute;text-align:center;margin-top: -30px;margin-right:50px;"><?php echo $number; ?></p>
+            <i class="fas fa-bell"></i>
+          <?php endif; ?>
         </span>
       </li>
       <li>
         <span onmouseenter="hoverEnter(3)">
-          <i class="fas fa-book"></i>
+          <?php $results =  $mysqli->query("SELECT * FROM msg WHERE teacher = '" . $_SESSION['name'] . "'") or die($mysqli->error); ?>
+          <?php $number = mysqli_num_rows($results) ?>
+          <?php if ($number <= 0) : ?>
+            <i class="fas fa-comments"></i>
+          <?php else : ?>
+            <p style="padding: 4px;background-color:red;border-radius:50%;color:white;height:25px;width:25px;font-size:xx-small;position:absolute;text-align:center;margin-top: -30px;margin-right:50px;">new</p>
+            <i class="fas fa-comments"></i>
+          <?php endif; ?>
         </span>
       </li>
       <li>
         <span onmouseenter="hoverEnter(4)">
+          <i class="fas fa-book"></i>
+        </span>
+      </li>
+      <li>
+        <span onmouseenter="hoverEnter(5)">
           <i class="fas fa-sign-out-alt"></i>
         </span>
       </li>
@@ -118,40 +137,25 @@
     <div id="screen_1" class="screen">
 
       <h2>Your Students</h2>
-      <table class="table table-hover mt-5">
+      <table class="table table-hover mt-5" style="border: 1px solid #ebebeb;">
         <thead>
           <tr>
             <th scope="col">Name</th>
             <th scope="col">Subject</th>
-            <th scope="col">Status</th>
             <th scope="col">Session</th>
             <th scope="col">Handle</th>
           </tr>
         </thead>
+        <?php $result = $mysqli->query("SELECT * FROM request WHERE teacher='" . $_SESSION['name'] . "' && status = 1 && obtain='yes'") or die($mysqli->error); ?>
         <tbody id="myTable">
-
-          <tr>
-            <td>
-              <p>Juan Enciso</p>
-
-            </td>
-            <td>
-              <p>Math</p>
-
-            </td>
-            <td>
-              <button class="btn btn-info btn-sm">Online <ion-icon name="radio-button-on-outline"></ion-icon></button>
-            </td>
-            <td>
-              <a href="../public/studentList.html"><button class="btn btn-success" id="class">Initiate Class</button></a>
-
-            </td>
-            <td>
-              <a href="../public/studentList.html" class="btn btn-outline-info">Message <ion-icon name="mail-unread-outline"></ion-icon></a>
-              <a href="../public/studentList.html" class="btn btn-danger">End Contract <ion-icon name="trash-outline"></ion-icon></a>
-            </td>
-          </tr>
-
+          <?php while ($row = mysqli_fetch_array($result)) : ?>
+            <tr>
+              <td><?php echo $row['name'] ?></td>
+              <td><?php echo $row['subjects'] ?></td>
+              <td><a href="chatstudent.php" style="text-decoration: none;" class="btn btn-secondary btn-lg">Initiate Class <i class="fas fa-comments"></i></a></td>
+              <td><a href="process.php?dropstud=<?= $row['name'] ?>" class="btn btn-outline-danger btn-lg">Report/Drop <i class="fas fa-ban"></i></a></td>
+            </tr>
+          <?php endwhile; ?>
         </tbody>
       </table>
 
@@ -159,7 +163,7 @@
 
 
     <div id="screen_2" class="screen">
-      <h2>New Student Notifications</h2>
+      <h2>New Student Request</h2>
       <div class="row justify-content-center mt-5">
 
         <table class="table table-hover">
@@ -180,8 +184,12 @@
                 </td>
                 <td>
                   <p>
-                    <a href="process.php?accept=<?= $row['id'] ?>&&name=<?= $row['name'] ?>" class="btn btn-primary btn-sm mr-3">Accept <i class="fas fa-user-check"></i></a>
-                    <a href="../public/studentList.html" class="btn btn-danger btn-sm">Refuse <i class="fas fa-ban"></i></a>
+                    <?php if ($row['obtain'] == 'yes') : ?>
+                      <button class="btn btn-primary btn-sm mr-3" disabled>New Student Accepted <i class="fas fa-user-check"></i></button>
+                    <?php else : ?>
+                      <a href="process.php?accept=<?= $row['id'] ?>&&name=<?= $row['name'] ?>" class="btn btn-primary btn-sm mr-3">Accept <i class="fas fa-user-check"></i></a>
+                      <a href="process.php?refuse=<?= $row['id'] ?>" class="btn btn-danger btn-sm">Refuse <i class="fas fa-ban"></i></a>
+                    <?php endif; ?>
                   </p>
                 </td>
                 </td>
@@ -195,11 +203,91 @@
 
 
     <div id="screen_3" class="screen">
-      <h2>Help Other To Get The Same</h2>
+      <h2>Announcements/Tasks & Assignments</h2>
+
+      <style>
+        .message {
+          transition: 0.9s;
+        }
+
+        .message:hover {
+          transform: scale(0.9);
+        }
+      </style>
+      <div class="row justify-content-center mt-5">
+        <div class="card message" style="width: 18rem;height:5rem;position:absolute;background-color:#a3cbff;">
+          <a href="chatstudent.php" class="message" style="position: relative; margin-top:30px;color:white;border:none;background-color:transparent;font-size:large;margin-left:75px;text-decoration:none;">Message Now <i class="far fa-comments"></i></a>
+        </div>
+      </div>
 
     </div>
     <div id="screen_4" class="screen">
-      <p> <a class="btn btn-secondary btn-lg" href="process.php?logout">Logout <i class="fas fa-sign-out-alt"></i></a></p>
+
+
+
+      <h2>Posted Course(s)</h2>
+      <div class="row mt-4">
+        <?php $results =  $mysqli->query("SELECT DISTINCT subjects,teacher,type FROM request WHERE teacher = '" . $_SESSION['name'] . "'") or die($mysqli->error); ?>
+        <?php $number = mysqli_num_rows($results) ?>
+        <?php if ($number <= 0) : ?>
+          <img src="./img/found.png" width="600" alt="">
+          <p>No Courses Found!</p>
+        <?php else : ?>
+
+          <?php while ($row = mysqli_fetch_array($results)) : ?>
+            <div class="col-md-3 mt-3 ml-5" id="items">
+              <div class="card" style="width:230px;height:230px;" id="box">
+                <div class="card-body" id="subjects">
+                  <form action="process.php" method="post">
+                    <h6 class="mb-3"><?php echo $row['subjects']; ?> <i class="fas fa-book"></i></h6>
+                    <center> <small style="font-size: x-small;font-weight:100px;" class="text-success">2020 - 2021</small></center>
+                    <?php if ($row['subjects']  == "History") : ?>
+                      <small class="text-muted">The whole series of past events connected something.</small>
+                    <?php elseif ($row['subjects']  == "Math") : ?>
+                      <small class="text-muted">Math is fun and challenging! Enjoy solving with us!</small>
+                    <?php elseif ($row['subjects']  == "Earth and Life Sciences") : ?>
+                      <small class="text-muted">Come and Explore the mystery of the Earth and Across!</small>
+                    <?php elseif ($row['subjects']  == "Algebra") : ?>
+                      <small class="text-muted">Let us play with algebra, various equations and steps!</small>
+                    <?php elseif ($row['subjects']  == "Chemistry") : ?>
+                      <small class="text-muted">We are happy to see you, working with artificial sunbstances!</small>
+                    <?php elseif ($row['subjects']  == "Physics") : ?>
+                      <small class="text-muted">Let us follow the steps of the famous scientist.</small>
+                    <?php elseif ($row['subjects']  == "Programming") : ?>
+                      <small class="text-muted">Learn how computer works and lets your own ideal systems!</small>
+                    <?php elseif ($row['subjects']  == "English Communication") : ?>
+                      <small class="text-muted">Lets be better to communicate English!</small>
+                    <?php elseif ($row['subjects']  == "Fitnness") : ?>
+                      <small class="text-muted">You are healthy with guiding exercises. You can be anyone you like!</small>
+                    <?php elseif ($row['subjects']  == "Literature") : ?>
+                      <small class="text-muted">Awesome stories around the world in your hands!</small>
+                    <?php elseif ($row['subjects']  == "Statistics") : ?>
+                      <small class="text-muted">Compute statistically and deepin your understanding abount population!</small>
+                    <?php elseif ($row['subjects']  == "Entrepreneurship") : ?>
+                      <small class="text-muted">We are happy to engage business with you!</small>
+                    <?php endif; ?>
+
+                    <br><br><small class="text-dark"><i class="fas fa-chalkboard-teacher"></i> &nbsp;</small><small><?php echo $row['teacher'] ?></small>
+                    <br>
+                    <center>
+                      <a href="process.php?dropcourse=<?= $row['subjects'] ?>" class="btn btn-danger btn-sm mt-3">Drop Course... <i class="fas fa-user-clock"></i></a>
+                    </center>
+                </div>
+                </form>
+              </div>
+            </div>
+      </div>
+    <?php endwhile; ?>
+
+  <?php endif; ?>
+
+    </div>
+    <div id="screen_5" class="screen">
+      <div class="row justify-content-center mt-5">
+        <div class="card message" style="width: 18rem;height:5rem;position:absolute;background-color:#bfbfbf;margin-top:10rem;">
+          <a href="process.php?logoutT" class="message" style="position: relative; margin-top:30px;color:white;border:none;background-color:transparent;font-size:large;margin-left:100px;text-decoration:none;">Log Out <i class="fas fa-sign-out-alt"></i></a>
+        </div>
+      </div>
     </div>
   </div>
   <script>

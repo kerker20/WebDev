@@ -82,7 +82,7 @@
                                     <option value="Earth and Life Science">Earth and Life Science</option>
                                     <option value="Algebra">Algebra</option>
                                     <option value="Chemistry">Chemistry</option>
-                                    <option value="Pyschics">Pyschics</option>
+                                    <option value="Physics">Physics</option>
                                     <option value="Programming">Programming</option>
                                     <option value="English Communication">English Communication</option>
                                     <option value="History">History</option>
