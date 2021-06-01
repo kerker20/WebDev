@@ -97,6 +97,7 @@
                             <div class="widget-content-wrapper">
                                 <div class="widget-content-left  ml-3 header-user-info">
                                     <div class="widget-heading">
+                                        <a href="home.php"><i class="fas fa-chalkboard-teacher"></i></a>
                                         MyPrivateTutor
                                     </div>
                                     <div class="widget-subheading">
@@ -120,8 +121,8 @@
                     </div>
                     <div class="container" style="max-width: 300px;">
 
-                        <h5 class="card-title text-primary">Login<span>
-                                <ion-icon size="large" name="person-circle-outline"></ion-icon>
+                        <h5 class="card-title text-secondary">Login<span>
+                                <i class="fas fa-chalkboard-teacher"></i>
                             </span></h5><br>
                         <p class="card-title">Your partner Tech-chers</p>
                         <p class="card-text text-muted">Engage yourself in modern learning platform.</p>
@@ -134,7 +135,7 @@
                             </div>
                             <hr />
                             <p align="center">
-                                <button type="submit" class="btn btn-primary" id="login">login <ion-icon name="log-in-outline"></ion-icon></button>
+                                <button type="submit" class="btn btn-secondary" id="login">Login <i class="fas fa-sign-in-alt"></i></button>
                             </p>
                             <hr />
                             <div class="container">
@@ -144,7 +145,7 @@
                             </div>
                             <center>
                                 <p style="color: #888; margin: 0px 0px 0px 0px;">Don't have an account yet?</p>
-                                <a style="text-decoration:none;" href="register.php">Create an account</a>
+                                <a style="text-decoration:none;" href="register.php" class="text-success">Create an account</a>
                                 <div id="response"></div>
                             </center>
                         </fieldset>

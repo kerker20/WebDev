@@ -83,6 +83,7 @@
                             <div class="widget-content-wrapper">
                                 <div class="widget-content-left  ml-3 header-user-info">
                                     <div class="widget-heading">
+                                        <a href="home.php"><i class="fas fa-chalkboard-teacher"></i></a>
                                         MyPrivateTutor
                                     </div>
                                     <div class="widget-subheading">
@@ -106,8 +107,8 @@
                     </div>
                     <div class="container" style="max-width: 300px;">
 
-                        <h5 class="card-title text-primary">Signup<span>
-                                <ion-icon size="large" name="person-circle-outline"></ion-icon>
+                        <h5 class="card-title text-secondary">Signup<span>
+                                <i class="fas fa-chalkboard-teacher"></i>
                             </span></h5><br>
                         <p class="card-text">Your partner Tech-chers</p>
                         <fieldset>
@@ -125,7 +126,7 @@
                             </div>
                             <hr />
                             <p align="center">
-                                <button type="submit" class="btn btn-primary" id="signup">Signup <ion-icon name="log-in-outline"></ion-icon></button>
+                                <button type="submit" class="btn btn-secondary" id="signup">Signup <i class="fas fa-sign-in-alt"></i></button>
                             </p>
                             <hr />
                             <div class="container">
@@ -135,7 +136,7 @@
                             </div>
                             <center>
                                 <p style="color: #888; margin: 0px 0px 0px 0px;">Already have an account?</p>
-                                <a style="text-decoration:none;" href="login.php">Login</a>
+                                <a style="text-decoration:none;" href="login.php" class="text-success">Login</a>
                                 <div id="response"></div>
                             </center>
                         </fieldset>

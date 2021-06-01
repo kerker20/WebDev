@@ -3,7 +3,9 @@
 session_start();
 
 $mysqli = new mysqli('localhost', 'root', '', 'privatetutor') or die(mysqli_error($mysqli));
-
+$name = '';
+$address = '';
+$contact = '';
 
 
 if (isset($_POST['submit'])) {
@@ -104,4 +106,24 @@ if (isset($_GET['accept'])) {
     mysqli_query($mysqli, "update teacherinfo set status=0 where name='" . $_SESSION['name'] . "'") or die($mysqli->error);
 
     header("location: teacher.php");
+}
+if (isset($_POST['update'])) {
+    $user = $_SESSION['name'];
+    $add = $_POST['address'];
+    $con = $_POST['contact'];
+
+    $mysqli->query("UPDATE teacherinfo SET address='$add', contact='$con' WHERE name='$user'") or die($mysqli->error);
+
+    header("location: teacher.php");
+}
+if (isset($_POST['pass'])) {
+    $user = $_SESSION['name'];
+    $pass = mysqli_real_escape_string($mysqli, strip_tags(preg_replace('#[^@.0-9a-zA-Z]#i', '', $_POST['pass'])));
+    $rpass = mysqli_real_escape_string($mysqli, strip_tags(preg_replace('#[^@.0-9a-zA-Z]#i', '', $_POST['rpass'])));
+
+    $encrypt = md5($pass);
+
+    $mysqli->query("UPDATE users SET pass='$encrypt', rpass='$rpass' WHERE name='" . $_SESSION['name'] . "'") or die($mysqli->error);
+
+    header("location: login.php");
 }

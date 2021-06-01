@@ -41,5 +41,10 @@ if (mysqli_num_rows($query) > 0) {
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <?php }
 } else { ?>
-    <p class="text-muted mt-3">No Messages...</p>
+    <center>
+        <p class="lead">Message Box is Empty</p>
+    </center>
+    <div class="row justify-content-center">
+        <img src="./img/found.png" width="250" alt="">
+    </div>
 <?php } ?>
