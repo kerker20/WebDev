@@ -7,18 +7,17 @@ if (isset($_GET['email'])) {
 
     $encrypt = md5($pass);
 
-    $query = "select * from students where email='$email' && pass='$encrypt'";
+    $query = "select * from admin where email='$email' && pass='$encrypt'";
 
     $check = mysqli_num_rows(mysqli_query($mysqli, $query));
 
     if ($check == '1') {
         $name = mysqli_fetch_array(mysqli_query($mysqli, $query));
+        $_SESSION['id'] = $name['user_id'];
         $_SESSION['name'] = $name['name'];
         $_SESSION['email'] = $name['email'];
 
-        mysqli_query($mysqli, "update students set status=1 where email='$email'") or die($mysqli->error);
-
-        echo "<script>window.open('student.php','_self');</script>";
+        echo "<script>window.open('admin.php','_self');</script>";
     } else {
         echo "<script>window.open('none.php','_self');</script>";
     }

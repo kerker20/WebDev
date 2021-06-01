@@ -9,7 +9,7 @@ a {
 #btn:hover {
   background-color: transparent;
   color: black;
-  border-bottom: 1px rgb(153, 153, 153) solid;
+  border-bottom: 1px green solid;
   transition: 0.6s;
 }
 

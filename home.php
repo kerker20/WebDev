@@ -37,7 +37,7 @@
                         <a class="nav-link text-dark" href="#">Help<span></span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" href="login.html">Sign In</a>
+                        <a class="nav-link text-dark" href="admin.php">Admin</a>
                     </li>
                     &nbsp;&nbsp;
                     <li class="nav-item">

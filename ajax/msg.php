@@ -42,7 +42,7 @@ if (mysqli_num_rows($query) > 0) {
     <?php }
 } else { ?>
     <center>
-        <p class="lead">Message Box is Empty</p>
+        <p class="lead">Please Refresh the Page</p>
     </center>
     <div class="row justify-content-center">
         <img src="./img/found.png" width="250" alt="">

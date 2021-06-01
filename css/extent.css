@@ -175,9 +175,3 @@ h2:after {
   left: calc(50% - 35px);
   bottom: -15px;
 }
-.message {
-  transition: 1s;
-}
-.message:hover {
-  transform: scale(1.2);
-}

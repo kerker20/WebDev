@@ -1,6 +1,6 @@
 <?php
 include('process.php');
-if (!$_SESSION['name']) {
+if (!$_SESSION['name1']) {
   header('location: login.php');
 } else {
 ?>
@@ -45,7 +45,7 @@ if (!$_SESSION['name']) {
         </li>
         <li>
           <span onmouseenter="hoverEnter(2)">
-            <?php $results =  $mysqli->query("SELECT * FROM request WHERE teacher = '" . $_SESSION['name'] . "' && status = 0 && obtain = 'no'") or die($mysqli->error); ?>
+            <?php $results =  $mysqli->query("SELECT * FROM request WHERE teacher = '" . $_SESSION['name1'] . "' && status = 0 && obtain = 'no'") or die($mysqli->error); ?>
             <?php $number = mysqli_num_rows($results) ?>
             <?php if ($number <= 0) : ?>
               <i class="fas fa-bell"></i>
@@ -57,7 +57,7 @@ if (!$_SESSION['name']) {
         </li>
         <li>
           <span onmouseenter="hoverEnter(3)">
-            <?php $results =  $mysqli->query("SELECT * FROM msg WHERE teacher = '" . $_SESSION['name'] . "'") or die($mysqli->error); ?>
+            <?php $results =  $mysqli->query("SELECT * FROM msg WHERE teacher = '" . $_SESSION['name1'] . "'") or die($mysqli->error); ?>
             <?php $number = mysqli_num_rows($results) ?>
             <?php if ($number <= 0) : ?>
               <i class="fas fa-comments"></i>
@@ -90,7 +90,7 @@ if (!$_SESSION['name']) {
             </div>
             <div class="col-lg-6" style="margin-top:9%;float: right;">
               <h1>
-                <Strong>Welcome <?php echo $_SESSION['name'] ?>!</Strong>
+                <Strong>Welcome <?php echo $_SESSION['name1'] ?>!</Strong>
               </h1>
               <br>
               <p>Start Teaching children across the world through online. No matter where you are, we are reaching you out with education.</p>
@@ -110,7 +110,7 @@ if (!$_SESSION['name']) {
                 </thead>
                 <tbody id="myTable">
 
-                  <?php $result = $mysqli->query("Select * from teacherinfo where name='" . $_SESSION['name'] . "'") ?>
+                  <?php $result = $mysqli->query("Select * from teacherinfo where name='" . $_SESSION['name1'] . "'") ?>
                   <?php while ($row = mysqli_fetch_array($result)) : ?>
                     <tr>
                       <td>
@@ -212,7 +212,7 @@ if (!$_SESSION['name']) {
               <th scope="col">Handle</th>
             </tr>
           </thead>
-          <?php $result = $mysqli->query("SELECT * FROM request WHERE teacher='" . $_SESSION['name'] . "' && status = 1 && obtain='yes'") or die($mysqli->error); ?>
+          <?php $result = $mysqli->query("SELECT * FROM request WHERE teacher='" . $_SESSION['name1'] . "' && status = 1 && obtain='yes'") or die($mysqli->error); ?>
           <tbody id="myTable">
             <?php while ($row = mysqli_fetch_array($result)) : ?>
               <tr>
@@ -241,7 +241,7 @@ if (!$_SESSION['name']) {
 
             <tbody id="myTable">
 
-              <?php $result = $mysqli->query("Select * from request where teacher='" . $_SESSION['name'] . "'") ?>
+              <?php $result = $mysqli->query("Select * from request where teacher='" . $_SESSION['name1'] . "'") ?>
               <?php while ($row = mysqli_fetch_array($result)) : ?>
                 <tr>
                   <td>
@@ -298,7 +298,7 @@ if (!$_SESSION['name']) {
 
         <h2>Posted Course(s)</h2>
         <div class="row mt-4">
-          <?php $results =  $mysqli->query("SELECT * FROM teacherinfo WHERE name = '" . $_SESSION['name'] . "' ") or die($mysqli->error); ?>
+          <?php $results =  $mysqli->query("SELECT * FROM teacherinfo WHERE name = '" . $_SESSION['name1'] . "' ") or die($mysqli->error); ?>
           <?php $number = mysqli_num_rows($results) ?>
           <?php if ($number <= 0) : ?>
             <img src="./img/found.png" width="600" alt="">

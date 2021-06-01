@@ -2,7 +2,7 @@
     <div class="row">
         <?php
         include('../process.php');
-        $query = mysqli_query($mysqli, "select * from request where teacher = '" . $_SESSION['name'] . "' && status=1 && obtain='yes'");
+        $query = mysqli_query($mysqli, "select * from request where teacher = '" . $_SESSION['name1'] . "' && status=1 && obtain='yes'");
         while ($data = mysqli_fetch_array($query)) {
             $n = ucwords($data['name']);
             $u = $data['name'];

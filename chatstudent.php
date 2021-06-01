@@ -1,6 +1,6 @@
 <?php
 include('process.php');
-if (!$_SESSION['name']) {
+if (!$_SESSION['name1']) {
     header('location: login.php');
 } else {
 ?>

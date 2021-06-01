@@ -94,6 +94,7 @@ if (!$_SESSION['name']) {
                         }, function(data) {
 
                             $("#response").html(data);
+
                         });
                         $("#msg").val("");
                     }
@@ -104,6 +105,7 @@ if (!$_SESSION['name']) {
                 $(function() {
                     $.get("ajax/msg.php", function(data) {
                         $(".contents").html(data);
+
                     });
                 });
             }

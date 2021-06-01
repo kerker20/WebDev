@@ -51,7 +51,7 @@ if (isset($_GET['cancel'])) {
 
 if (isset($_GET['logoutT'])) {
 
-    $user = $_SESSION['email'];
+    $user = $_SESSION['email1'];
 
     mysqli_query($mysqli, "update users set status=0 where email='$user'") or die($mysqli->error);
 
@@ -63,7 +63,7 @@ if (isset($_GET['logout'])) {
 
     $user = $_SESSION['email'];
 
-    mysqli_query($mysqli, "update users set status=0 where email='$user'") or die($mysqli->error);
+    mysqli_query($mysqli, "update students set status=0 where email='$user'") or die($mysqli->error);
 
     session_destroy();
 
@@ -102,13 +102,13 @@ if (isset($_GET['accept'])) {
     $id = $_GET['accept'];
     $student = $_GET['name'];
 
-    mysqli_query($mysqli, "update request set obtain= 'yes', status = 1 where name='$student' && teacher='" . $_SESSION['name'] . "'") or die($mysqli->error);
-    mysqli_query($mysqli, "update teacherinfo set status=0 where name='" . $_SESSION['name'] . "'") or die($mysqli->error);
+    mysqli_query($mysqli, "update request set obtain= 'yes', status = 1 where name='$student' && teacher='" . $_SESSION['name1'] . "'") or die($mysqli->error);
+    mysqli_query($mysqli, "update teacherinfo set status=0 where name='" . $_SESSION['name1'] . "'") or die($mysqli->error);
 
     header("location: teacher.php");
 }
 if (isset($_POST['update'])) {
-    $user = $_SESSION['name'];
+    $user = $_SESSION['name1'];
     $add = $_POST['address'];
     $con = $_POST['contact'];
 
@@ -117,13 +117,13 @@ if (isset($_POST['update'])) {
     header("location: teacher.php");
 }
 if (isset($_POST['pass'])) {
-    $user = $_SESSION['name'];
+    $user = $_SESSION['name1'];
     $pass = mysqli_real_escape_string($mysqli, strip_tags(preg_replace('#[^@.0-9a-zA-Z]#i', '', $_POST['pass'])));
     $rpass = mysqli_real_escape_string($mysqli, strip_tags(preg_replace('#[^@.0-9a-zA-Z]#i', '', $_POST['rpass'])));
 
     $encrypt = md5($pass);
 
-    $mysqli->query("UPDATE users SET pass='$encrypt', rpass='$rpass' WHERE name='" . $_SESSION['name'] . "'") or die($mysqli->error);
+    $mysqli->query("UPDATE users SET pass='$encrypt', rpass='$rpass' WHERE name='" . $_SESSION['name1'] . "'") or die($mysqli->error);
 
     header("location: login.php");
 }

@@ -1,8 +1,8 @@
 <?php
 include('../process.php');
-$sen = $_SESSION['name'];
+$sen = $_SESSION['name1'];
 $rec = $_SESSION['rece'];
-$check = ucwords($_SESSION['name']);
+$check = ucwords($_SESSION['name1']);
 $i = 0;
 $query = mysqli_query($mysqli, "select * from msg where user='$sen' && teacher='$rec' || user='$rec' && teacher='$sen' order by 1 ASC ") or die($mysqli->error);
 $date = date('Y/m/d');
@@ -42,7 +42,7 @@ if (mysqli_num_rows($query) > 0) {
     <?php }
 } else { ?>
     <center>
-        <p class="lead">Message Box is Empty</p>
+        <p class="lead">Please Refresh the Page</p>
     </center>
     <div class="row justify-content-center">
         <img src="./img/found.png" width="250" alt="">

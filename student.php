@@ -120,7 +120,7 @@ if (!$_SESSION['name']) {
           <input class="form-control mr-sm-2" id="myInput" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
-        <div class="card message" style="width: 10rem;height:3rem;position:absolute;background-color:#bfbfbf;margin-top:6rem;margin-left:40rem;">
+        <div class="card message" style="width: 10rem;height:3rem;position:absolute;background-color:#bfbfbf;margin-top:3rem;margin-left:40rem;">
           <a href="studentReq.php" class="message" style="position: relative;color:white;border:none;background-color:transparent;font-size:small;margin-left:30px;text-decoration:none;margin-top:13px;">View Request <i class="fas fa-sign-out-alt"></i></a>
         </div>
         <h2>Start to Find Your Teachers</h2>
@@ -157,7 +157,7 @@ if (!$_SESSION['name']) {
                     <?php elseif ($row['subjects']  == "Literature") : ?>
                       <small class="text-muted">Awesome stories around the world in your hands!</small>
                     <?php elseif ($row['subjects']  == "Statistics") : ?>
-                      <small class="text-muted">Compute statistically and deepin your understanding abount population!</small>
+                      <small class="text-muted">Compute statistically MATH!</small>
                     <?php elseif ($row['subjects']  == "Entrepreneurship") : ?>
                       <small class="text-muted">We are happy to engage business with you!</small>
                     <?php endif; ?>

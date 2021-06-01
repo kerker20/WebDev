@@ -1,6 +1,6 @@
 <?php
 include('process.php');
-if (!$_SESSION['name']) {
+if (!$_SESSION['name1']) {
     header('location: login.php');
 } else {
 ?>
@@ -94,6 +94,7 @@ if (!$_SESSION['name']) {
                         }, function(data) {
 
                             $("#response").html(data);
+                            location.reload();
                         });
                         $("#msg").val("");
                     }
@@ -104,6 +105,7 @@ if (!$_SESSION['name']) {
                 $(function() {
                     $.get("ajax/studentmsg.php", function(data) {
                         $(".contents").html(data);
+
                     });
                 });
             }
