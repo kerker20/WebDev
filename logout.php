@@ -4,4 +4,4 @@ include 'process.php';
 
 session_destroy();
 
-header("location: adminlogin.php");
+header("location: home.php");

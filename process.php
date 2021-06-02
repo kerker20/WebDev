@@ -57,7 +57,7 @@ if (isset($_GET['logoutT'])) {
 
     session_destroy();
 
-    header("location: login.php");
+    header("location: home.php");
 }
 if (isset($_GET['logout'])) {
 
@@ -67,7 +67,7 @@ if (isset($_GET['logout'])) {
 
     session_destroy();
 
-    header("location: studentlogin.php");
+    header("location: home.php");
 }
 
 if (isset($_GET['dropcourse'])) {

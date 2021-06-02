@@ -92,7 +92,7 @@
                                 <div class="overlay-darker"></div>
                                 <div class="overlay"></div>
                                 <div class="Hover_con_text">
-                                    <img src="./img/loupe.png" class="img-fluid" alt="Responsive image" style="width: 70px" />
+                                    <!-- <img src="./img/loupe.png" class="img-fluid" alt="Responsive image" style="width: 70px" /> -->
                                     <p class="lead mt-4">Post your learning needs</p>
                                     <p id="p">
                                         Post your tutor requirements. Our experts will analyze it and make it live on our job board.
@@ -104,7 +104,7 @@
                                 <div class="overlay-darker"></div>
                                 <div class="overlay"></div>
                                 <div class="Hover_con_text">
-                                    <img src="./img/checklist.png" class="img-fluid" alt="Responsive image" style="width: 75px" />
+                                    <!-- <img src="./img/checklist.png" class="img-fluid" alt="Responsive image" style="width: 75px" /> -->
                                     <p class="lead mt-4">Get up to 10 tutor applications</p>
                                     <p id="p">
                                         You'll receive the ten best tutors applications in your account within 48 hours closely matching to your requirements.
@@ -115,7 +115,7 @@
                                 <div class="overlay-darker"></div>
                                 <div class="overlay"></div>
                                 <div class="Hover_con_text">
-                                    <img src="./img/handshake.png" class="img-fluid" alt="Responsive image" style="width: 95px" />
+                                    <!-- <img src="./img/handshake.png" class="img-fluid" alt="Responsive image" style="width: 95px" /> -->
                                     <p class="lead mt-4">Select tutors & start learning</p>
                                     <p id="p">
                                         Choose the best tutor applications. Request the selected Tutors for trial sessions before hiring for regular classes. Give us your feedback.
